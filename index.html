@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Riverside Community Centre</title>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #0066cc;
+            --secondary-color: #f5f5f5;
+            --border-color: #dddddd;
+            --link-color: #0066cc;
+            --button-bg: #0066cc;
+            --button-text: #ffffff;
+        }
+
+        /* High Contrast Theme */
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #ffff00;
+            --secondary-color: #1a1a1a;
+            --border-color: #ffffff;
+            --link-color: #ffff00;
+            --button-bg: #ffffff;
+            --button-text: #000000;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        /* Accessibility Controls */
+        .accessibility-controls {
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .accessibility-controls label {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .accessibility-controls button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--button-bg);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .accessibility-controls button:hover {
+            opacity: 0.8;
+        }
+
+        .accessibility-controls button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+
+        body.high-contrast header {
+            background-color: #1a1a1a;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav-menu li {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .nav-menu li:last-child a {
+            border-right: none;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Focus Styles */
+        *:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        a:focus {
+            outline-color: var(--primary-color);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+            border: 2px solid var(--button-bg);
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--border-color);
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .accessibility-controls {
+                justify-content: center;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Screen Reader Announcements -->
+    <div id="sr-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Accessibility Controls -->
+    <div class="accessibility-controls" role="region" aria-label="Accessibility controls">
+        <div class="control-group">
+            <label for="font-controls">Text Size:</label>
+            <div id="font-controls">
+                <button id="font-decrease" aria-label="Decrease font size" title="Decrease font size">A-</button>
+                <button id="font-reset" aria-label="Reset font size" title="Reset font size">A</button>
+                <button id="font-increase" aria-label="Increase font size" title="Increase font size">A+</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="theme-toggle">High Contrast:</label>
+            <button id="theme-toggle" aria-pressed="false" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                Toggle
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="header-content">
+            <h1>Riverside Community Centre</h1>
+            <p style="margin: 0; color: white; font-size: 1.1rem;">Bringing Our Community Together</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#main-content" class="active" aria-current="page">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Programs & Services</a></li>
+                <li><a href="form.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <h2 id="hero-heading">Welcome to Riverside Community Centre</h2>
+            <p>
+                We are a vibrant community hub serving residents of all ages and abilities. 
+                Our mission is to provide inclusive programs, activities, and services that 
+                strengthen our community and improve quality of life for everyone.
+            </p>
+            <p>
+                From fitness classes to arts programs, youth activities to senior services, 
+                we offer something for every member of our diverse community.
+            </p>
+            <a href="services.html" class="cta-button">Explore Our Programs</a>
+        </section>
+
+        <!-- Features -->
+        <section aria-labelledby="features-heading">
+            <h2 id="features-heading">What We Offer</h2>
+            <div class="features">
+                <article class="feature-card">
+                    <h3>Fitness & Wellness</h3>
+                    <p>
+                        Modern gym facilities, yoga classes, swimming pool, and wellness programs 
+                        designed for all fitness levels and abilities.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Arts & Culture</h3>
+                    <p>
+                        Creative workshops, art studios, music lessons, and cultural events that 
+                        celebrate our diverse community heritage.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Youth Programs</h3>
+                    <p>
+                        After-school care, sports leagues, summer camps, and educational activities 
+                        for children and teenagers.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Senior Services</h3>
+                    <p>
+                        Social clubs, health programs, technology training, and support services 
+                        for older adults in our community.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Community Events</h3>
+                    <p>
+                        Regular festivals, markets, workshops, and gatherings that bring our 
+                        neighborhood together throughout the year.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Support Services</h3>
+                    <p>
+                        Counseling, job training, language classes, and assistance programs for 
+                        those who need extra support.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="hero" aria-labelledby="cta-heading">
+            <h2 id="cta-heading">Join Our Community</h2>
+            <p>
+                Membership is open to all residents. Enjoy access to our facilities, discounted 
+                program fees, and be part of a welcoming, inclusive community.
+            </p>
+            <a href="form.html" class="cta-button">Become a Member Today</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p><strong>Riverside Community Centre</strong></p>
+            <p>123 Community Way, Riverside, RC1 2AB</p>
+            <p>Phone: 01234 567890 | Email: info@riversidecc.org</p>
+            <p>Open Monday-Saturday: 7am-10pm | Sunday: 9am-6pm</p>
+            <p style="margin-top: 20px;">&copy; 2024 Riverside Community Centre. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
