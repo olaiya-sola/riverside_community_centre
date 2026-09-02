@@ -4,8 +4,694 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Riverside Community Centre</title>
-    <style></style>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #0066cc;
+            --secondary-color: #f5f5f5;
+            --border-color: #dddddd;
+            --link-color: #0066cc;
+            --button-bg: #0066cc;
+            --button-text: #ffffff;
+            --error-color: #d32f2f;
+            --success-color: #2e7d32;
+        }
+
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #ffff00;
+            --secondary-color: #1a1a1a;
+            --border-color: #ffffff;
+            --link-color: #ffff00;
+            --button-bg: #ffffff;
+            --button-text: #000000;
+            --error-color: #ff6b6b;
+            --success-color: #51cf66;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .accessibility-controls {
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .accessibility-controls label {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .accessibility-controls button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--button-bg);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .accessibility-controls button:hover {
+            opacity: 0.8;
+        }
+
+        .accessibility-controls button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+
+        body.high-contrast header {
+            background-color: #1a1a1a;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav-menu li {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .nav-menu li:last-child a {
+            border-right: none;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        *:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .intro-text {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            color: var(--text-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 15px 0;
+            color: var(--text-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .contact-card {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+
+        .contact-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+        }
+
+        .contact-info dt {
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--text-color);
+        }
+
+        .contact-info dd {
+            margin-left: 0;
+            margin-top: 5px;
+        }
+
+        .contact-info a {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            text-decoration: none;
+        }
+
+        .map-container {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            margin: 40px 0;
+        }
+
+        .map-placeholder {
+            background-color: var(--bg-color);
+            border: 2px solid var(--border-color);
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 8px;
+            color: var(--text-color);
+        }
+
+        .form-container {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .required {
+            color: var(--error-color);
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: Arial, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error-message {
+            display: block;
+            color: var(--error-color);
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-top: 8px;
+            padding: 8px;
+            background-color: rgba(211, 47, 47, 0.1);
+            border-left: 4px solid var(--error-color);
+            border-radius: 4px;
+        }
+
+        body.high-contrast .error-message {
+            background-color: transparent;
+            border: 2px solid var(--error-color);
+        }
+
+        .error-message:empty {
+            display: none;
+        }
+
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: var(--error-color);
+            border-width: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--button-bg);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            opacity: 0.85;
+        }
+
+        .success-message {
+            background-color: var(--success-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: none;
+        }
+
+        body.high-contrast .success-message {
+            border: 3px solid var(--success-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--border-color);
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .accessibility-controls {
+                justify-content: center;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div id="sr-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="accessibility-controls" role="region" aria-label="Accessibility controls">
+        <div class="control-group">
+            <label for="font-controls">Text Size:</label>
+            <div id="font-controls">
+                <button id="font-decrease" aria-label="Decrease font size" title="Decrease font size">A-</button>
+                <button id="font-reset" aria-label="Reset font size" title="Reset font size">A</button>
+                <button id="font-increase" aria-label="Increase font size" title="Increase font size">A+</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="theme-toggle">High Contrast:</label>
+            <button id="theme-toggle" aria-pressed="false" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                Toggle
+            </button>
+        </div>
+    </div>
+
+    <header role="banner">
+        <div class="header-content">
+            <h1>Riverside Community Centre</h1>
+            <p style="margin: 0; color: white; font-size: 1.1rem;">Bringing Our Community Together</p>
+        </div>
+    </header>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Programs & Services</a></li>
+                <li><a href="form.html">Register</a></li>
+                <li><a href="#main-content" class="active" aria-current="page">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+        <h1 class="page-title">Contact Us</h1>
+
+        <div class="intro-text">
+            <p>
+                We'd love to hear from you! Whether you have questions about our programs, 
+                need accessibility support, or want to get involved, we're here to help.
+            </p>
+        </div>
+
+        <section aria-labelledby="contact-details-heading">
+            <h2 id="contact-details-heading">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <h3>General Inquiries</h3>
+                    <dl class="contact-info">
+                        <dt>Phone:</dt>
+                        <dd><a href="tel:01234567890">01234 567890</a></dd>
+                        
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:info@riversidecc.org">info@riversidecc.org</a></dd>
+                        
+                        <dt>Hours:</dt>
+                        <dd>Monday-Friday: 9am-5pm</dd>
+                        <dd>Saturday: 10am-4pm</dd>
+                        <dd>Sunday: Closed</dd>
+                    </dl>
+                </article>
+
+                <article class="contact-card">
+                    <h3>Accessibility Support</h3>
+                    <dl class="contact-info">
+                        <dt>Coordinator:</dt>
+                        <dd>Aisha Patel</dd>
+                        
+                        <dt>Phone:</dt>
+                        <dd><a href="tel:01234567891">01234 567891</a></dd>
+                        
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:accessibility@riversidecc.org">accessibility@riversidecc.org</a></dd>
+                        
+                        <dt>Note:</dt>
+                        <dd>Contact at least 5 days before program start for accommodations</dd>
+                    </dl>
+                </article>
+
+                <article class="contact-card">
+                    <h3>Program Information</h3>
+                    <dl class="contact-info">
+                        <dt>Programs Manager:</dt>
+                        <dd>Michael Chen</dd>
+                        
+                        <dt>Phone:</dt>
+                        <dd><a href="tel:01234567892">01234 567892</a></dd>
+                        
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:programs@riversidecc.org">programs@riversidecc.org</a></dd>
+                    </dl>
+                </article>
+
+                <article class="contact-card">
+                    <h3>Visit Us</h3>
+                    <dl class="contact-info">
+                        <dt>Address:</dt>
+                        <dd>123 Community Way</dd>
+                        <dd>Riverside, RC1 2AB</dd>
+                        <dd>United Kingdom</dd>
+                        
+                        <dt>Facility Hours:</dt>
+                        <dd>Monday-Saturday: 7am-10pm</dd>
+                        <dd>Sunday: 9am-6pm</dd>
+                        
+                        <dt>Parking:</dt>
+                        <dd>Free accessible parking available on-site</dd>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section class="map-container" aria-labelledby="location-heading">
+            <h2 id="location-heading">Our Location</h2>
+            <div class="map-placeholder" role="img" aria-label="Map showing Riverside Community Centre at 123 Community Way, Riverside">
+                <p><strong>Map Placeholder</strong></p>
+                <p>In a real implementation, an accessible embedded map would appear here.</p>
+                <p>We are located in the heart of Riverside, easily accessible by public transport.</p>
+                <p>Bus routes 12, 34, and 56 stop directly outside the centre.</p>
+            </div>
+        </section>
+
+        <section aria-labelledby="message-form-heading">
+            <h2 id="message-form-heading">Send Us a Message</h2>
+            
+            <div id="success-message" class="success-message" role="alert" aria-live="assertive">
+                Thank you for your message! We'll respond within 1-2 business days.
+            </div>
+
+            <div class="form-container">
+                <form id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">
+                            Your Name <span class="required" aria-label="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="name-error"
+                            autocomplete="name"
+                        >
+                        <span id="name-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            Your Email <span class="required" aria-label="required">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="email-error"
+                            autocomplete="email"
+                        >
+                        <span id="email-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">
+                            Subject <span class="required" aria-label="required">*</span>
+                        </label>
+                        <select 
+                            id="subject" 
+                            name="subject" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="subject-error"
+                        >
+                            <option value="">-- Please select a subject --</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="programs">Program Information</option>
+                            <option value="accessibility">Accessibility Support</option>
+                            <option value="membership">Membership Question</option>
+                            <option value="feedback">Feedback or Suggestion</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span id="subject-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">
+                            Your Message <span class="required" aria-label="required">*</span>
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="message-error"
+                        ></textarea>
+                        <span id="message-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p><strong>Riverside Community Centre</strong></p>
+            <p>123 Community Way, Riverside, RC1 2AB</p>
+            <p>Phone: 01234 567890 | Email: info@riversidecc.org</p>
+            <p>Open Monday-Saturday: 7am-10pm | Sunday: 9am-6pm</p>
+            <p style="margin-top: 20px;">&copy; 2024 Riverside Community Centre. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>

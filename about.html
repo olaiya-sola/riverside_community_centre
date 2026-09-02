@@ -4,8 +4,617 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Riverside Community Centre</title>
-    <style></style>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #0066cc;
+            --secondary-color: #f5f5f5;
+            --border-color: #dddddd;
+            --link-color: #0066cc;
+            --button-bg: #0066cc;
+            --button-text: #ffffff;
+        }
+
+        /* High Contrast Theme */
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #ffff00;
+            --secondary-color: #1a1a1a;
+            --border-color: #ffffff;
+            --link-color: #ffff00;
+            --button-bg: #ffffff;
+            --button-text: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .accessibility-controls {
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .accessibility-controls label {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .accessibility-controls button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--button-bg);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .accessibility-controls button:hover {
+            opacity: 0.8;
+        }
+
+        .accessibility-controls button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+
+        body.high-contrast header {
+            background-color: #1a1a1a;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+            
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav-menu li {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .nav-menu li:last-child a {
+            border-right: none;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        *:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        a:focus {
+            outline-color: var(--primary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .intro-text {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            color: var(--text-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px 0;
+            color: var(--text-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .program-card {
+            background-color: var(--secondary-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .program-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .program-category {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        body.high-contrast .program-category {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--primary-color);
+        }
+
+        .program-details {
+            margin: 15px 0;
+        }
+
+        .program-details dt {
+            font-weight: bold;
+            margin-top: 10px;
+            color: var(--text-color);
+        }
+
+        .program-details dd {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 15px;
+            border: 2px solid var(--button-bg);
+            min-width: 44px;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        .accessibility-note {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .accessibility-note h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--border-color);
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .accessibility-controls {
+                justify-content: center;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Screen Reader Announcements -->
+    <div id="sr-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Accessibility Controls -->
+    <div class="accessibility-controls" role="region" aria-label="Accessibility controls">
+        <div class="control-group">
+            <label for="font-controls">Text Size:</label>
+            <div id="font-controls">
+                <button id="font-decrease" aria-label="Decrease font size" title="Decrease font size">A-</button>
+                <button id="font-reset" aria-label="Reset font size" title="Reset font size">A</button>
+                <button id="font-increase" aria-label="Increase font size" title="Increase font size">A+</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="theme-toggle">High Contrast:</label>
+            <button id="theme-toggle" aria-pressed="false" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+                Toggle
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="header-content">
+            <h1>Riverside Community Centre</h1>
+            <p style="margin: 0; color: white; font-size: 1.1rem;">Bringing Our Community Together</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#main-content" class="active" aria-current="page">About Us</a></li>
+                <li><a href="services.html">Programs & Services</a></li>
+                <li><a href="form.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <h1 class="page-title">About Riverside Community Centre</h1>
+
+        <div class="intro-text">
+            <p>
+                For over 35 years, Riverside Community Centre has been the heart of our neighborhood, 
+                providing a welcoming space where people of all ages, backgrounds, and abilities come 
+                together to learn, grow, and thrive.
+            </p>
+            <p>
+                We are committed to creating an inclusive environment that celebrates diversity and 
+                ensures everyone has access to the programs, services, and support they need to lead 
+                fulfilling lives.
+            </p>
+        </div>
+
+        <!-- Mission & Vision -->
+        <section class="content-section" aria-labelledby="mission-heading">
+            <h2 id="mission-heading">Our Mission & Vision</h2>
+            
+            <h3>Mission Statement</h3>
+            <p>
+                To strengthen our community by providing accessible, inclusive programs and services 
+                that enhance quality of life, promote health and wellbeing, and foster connections 
+                among all residents.
+            </p>
+
+            <h3>Vision Statement</h3>
+            <p>
+                A vibrant, connected community where every person has the opportunity to participate, 
+                contribute, and belong, regardless of age, ability, background, or circumstance.
+            </p>
+        </section>
+
+        <!-- Core Values -->
+        <section class="content-section" aria-labelledby="values-heading">
+            <h2 id="values-heading">Our Core Values</h2>
+            
+            <div class="values-grid">
+                <article class="value-card">
+                    <h3>Inclusivity</h3>
+                    <p>
+                        We welcome everyone and actively work to remove barriers that prevent 
+                        participation. Our programs and facilities are designed to be accessible 
+                        to people of all abilities.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <h3>Community</h3>
+                    <p>
+                        We believe in the power of connection. By bringing people together, we 
+                        create a stronger, more supportive neighborhood where everyone looks out 
+                        for one another.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <h3>Respect</h3>
+                    <p>
+                        We treat every individual with dignity and respect, valuing the unique 
+                        perspectives, experiences, and contributions each person brings to our 
+                        community.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <h3>Excellence</h3>
+                    <p>
+                        We strive for quality in everything we do, from our programs and facilities 
+                        to our customer service, ensuring our community receives the best possible 
+                        experience.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <h3>Innovation</h3>
+                    <p>
+                        We continuously adapt and evolve to meet changing community needs, embracing 
+                        new ideas and approaches to better serve our diverse population.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <h3>Collaboration</h3>
+                    <p>
+                        We partner with local organizations, schools, and businesses to maximize 
+                        resources and create comprehensive support networks for our community.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- History -->
+        <section class="content-section" aria-labelledby="history-heading">
+            <h2 id="history-heading">Our History</h2>
+            <p>
+                Riverside Community Centre opened its doors in 1989 as a small neighborhood gathering 
+                space. What began as a single room with basic facilities has grown into a comprehensive 
+                community hub serving over 15,000 residents annually.
+            </p>
+            <p>
+                Key milestones in our journey include:
+            </p>
+            <ul>
+                <li><strong>1989:</strong> Centre opens with fitness classes and youth programs</li>
+                <li><strong>1995:</strong> Major expansion adds swimming pool and gymnasium</li>
+                <li><strong>2002:</strong> Launch of senior services and support programs</li>
+                <li><strong>2008:</strong> Arts wing opened with studios and performance space</li>
+                <li><strong>2015:</strong> Complete accessibility renovation ensuring barrier-free access</li>
+                <li><strong>2020:</strong> Digital transformation with online programs during pandemic</li>
+                <li><strong>2023:</strong> New community garden and outdoor recreation area completed</li>
+            </ul>
+        </section>
+
+        <!-- Accessibility Commitment -->
+        <section class="content-section" aria-labelledby="accessibility-heading">
+            <h2 id="accessibility-heading">Our Accessibility Commitment</h2>
+            <p>
+                Accessibility is at the core of everything we do. We are committed to ensuring that 
+                all community members, regardless of physical, sensory, cognitive, or other abilities, 
+                can fully participate in our programs and access our facilities.
+            </p>
+            <p>
+                Our accessibility features include:
+            </p>
+            <ul>
+                <li>Wheelchair accessible entrances, elevators, and facilities throughout the building</li>
+                <li>Accessible parking spaces close to all entrances</li>
+                <li>Hearing loop systems in all meeting rooms and program spaces</li>
+                <li>Large print and audio versions of all program materials available upon request</li>
+                <li>Trained staff to assist with accessibility needs</li>
+                <li>Adaptive equipment available for fitness programs</li>
+                <li>Sensory-friendly spaces and programs for individuals with autism and sensory processing needs</li>
+                <li>Service animal friendly environment</li>
+            </ul>
+            <p>
+                We continuously review and improve our accessibility practices. If you have suggestions 
+                or encounter any barriers, please contact our Accessibility Coordinator.
+            </p>
+        </section>
+
+        <!-- Team -->
+        <section class="content-section" aria-labelledby="team-heading">
+            <h2 id="team-heading">Meet Our Team</h2>
+            <p>
+                Our dedicated staff and volunteers are passionate about serving the community and 
+                ensuring every visitor has a positive experience.
+            </p>
+
+            <div class="team-grid">
+                <article class="team-member">
+                    <h3>Sarah Thompson</h3>
+                    <p class="role">Executive Director</p>
+                    <p>
+                        Sarah has led the centre for 12 years, overseeing strategic growth and 
+                        community partnerships.
+                    </p>
+                </article>
+
+                <article class="team-member">
+                    <h3>Michael Chen</h3>
+                    <p class="role">Programs Manager</p>
+                    <p>
+                        Michael coordinates all programs and ensures quality, inclusive activities 
+                        for all age groups.
+                    </p>
+                </article>
+
+                <article class="team-member">
+                    <h3>Aisha Patel</h3>
+                    <p class="role">Accessibility Coordinator</p>
+                    <p>
+                        Aisha ensures our facilities and programs are accessible to everyone and 
+                        provides support for visitors with disabilities.
+                    </p>
+                </article>
+
+                <article class="team-member">
+                    <h3>James Wilson</h3>
+                    <p class="role">Facilities Manager</p>
+                    <p>
+                        James maintains our building and grounds, ensuring a safe, clean, and 
+                        welcoming environment for all.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p><strong>Riverside Community Centre</strong></p>
+            <p>123 Community Way, Riverside, RC1 2AB</p>
+            <p>Phone: 01234 567890 | Email: info@riversidecc.org</p>
+            <p>Open Monday-Saturday: 7am-10pm | Sunday: 9am-6pm</p>
+            <p style="margin-top: 20px;">&copy; 2024 Riverside Community Centre. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
