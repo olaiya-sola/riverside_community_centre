@@ -1,0 +1,319 @@
+/* CSS Variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #0066cc;
+  --secondary-color: #f5f5f5;
+  --border-color: #dddddd;
+  --link-color: #0066cc;
+  --button-bg: #0066cc;
+  --button-text: #ffffff;
+}
+
+/* High Contrast Theme */
+body.high-contrast {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --primary-color: #ffff00;
+  --secondary-color: #1a1a1a;
+  --border-color: #ffffff;
+  --link-color: #ffff00;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Skip Navigation Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Accessibility Controls */
+.accessibility-controls {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.accessibility-controls label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accessibility-controls button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--button-bg);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  transition: all 0.2s;
+}
+
+.accessibility-controls button:hover {
+  opacity: 0.8;
+}
+
+.accessibility-controls button:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px;
+}
+
+body.high-contrast header {
+  background-color: #1a1a1a;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* Navigation */
+nav {
+  background-color: var(--secondary-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.nav-menu li {
+  flex: 1;
+  min-width: 150px;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  border-right: 1px solid var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.nav-menu li:last-child a {
+  border-right: none;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.nav-menu a.active {
+  background-color: var(--primary-color);
+  color: var(--button-text);
+  font-weight: bold;
+  border-bottom: 4px solid currentColor;
+}
+
+
+/* Focus Styles */
+*:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:focus {
+  outline-color: var(--primary-color);
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.hero {
+  background-color: var(--secondary-color);
+  padding: 40px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 10px;
+  border: 2px solid var(--button-bg);
+  min-width: 44px;
+  min-height: 44px;
+  transition: all 0.2s;
+}
+
+.cta-button:hover {
+  opacity: 0.8;
+}
+
+/* Features Grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.feature-card {
+  background-color: var(--secondary-color);
+  padding: 30px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.feature-card p {
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--secondary-color);
+  border-top: 2px solid var(--border-color);
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content p {
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-menu a {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .accessibility-controls {
+    justify-content: center;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
