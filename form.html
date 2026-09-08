@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Riverside Community Centre</title>
     <link rel="stylesheet" href="css/form.css" />
@@ -117,7 +117,7 @@
         confirmation details.
       </div>
 
-    <!-- Form -->
+      <!-- Form -->
       <div class="form-container">
         <form id="registration-form" novalidate>
           <!-- Personal Information -->
@@ -133,7 +133,6 @@
                 id="full-name"
                 name="full-name"
                 required
-                aria-required="true"
                 aria-describedby="full-name-error"
                 autocomplete="name"
               />
@@ -154,7 +153,6 @@
                 id="email"
                 name="email"
                 required
-                aria-required="true"
                 aria-describedby="email-hint email-error"
                 autocomplete="email"
               />
@@ -178,7 +176,6 @@
                 id="phone"
                 name="phone"
                 required
-                aria-required="true"
                 aria-describedby="phone-hint phone-error"
                 autocomplete="tel"
               />
@@ -200,7 +197,6 @@
                 id="date-of-birth"
                 name="date-of-birth"
                 required
-                aria-required="true"
                 aria-describedby="date-of-birth-error"
                 autocomplete="bday"
               />
@@ -218,24 +214,25 @@
 
             <div class="form-group">
               <label for="program">
-                Select Program
+                Select Programme
                 <span class="required" aria-hidden="true">*</span>
               </label>
               <select
                 id="program"
                 name="program"
                 required
-                aria-required="true"
                 aria-describedby="program-error"
               >
-                <option value="">-- Please select a program --</option>
+                <option value="">-- Please select a programme --</option>
                 <option value="aqua-fitness">Aqua Fitness Classes</option>
                 <option value="adaptive-yoga">Adaptive Yoga</option>
                 <option value="mindfulness">Mindfulness & Meditation</option>
                 <option value="art-workshop">Creative Art Workshop</option>
                 <option value="choir">Community Choir</option>
                 <option value="after-school">After School Club</option>
-                <option value="teen-leadership">Teen Leadership Program</option>
+                <option value="teen-leadership">
+                  Teen Leadership Programme
+                </option>
                 <option value="seniors-club">Active Seniors Social Club</option>
                 <option value="tech-help">Tech Help for Seniors</option>
               </select>
@@ -264,7 +261,6 @@
                       name="membership"
                       value="yes"
                       required
-                      aria-required="true"
                     />
                     <label for="member-yes">I am a current member</label>
                   </div>
@@ -275,7 +271,6 @@
                       name="membership"
                       value="no"
                       required
-                      aria-required="true"
                     />
                     <label for="member-no"
                       >I am not a member (I'd like to join!)</label

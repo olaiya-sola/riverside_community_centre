@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Riverside Community Centre</title>
     <link rel="stylesheet" href="css/contact.css" />
@@ -30,24 +30,9 @@
           role="group"
           aria-labelledby="font-controls-label"
         >
-          <button
-            id="font-decrease"
-            aria-label="Decrease font size"
-          >
-            A-
-          </button>
-          <button
-            id="font-reset"
-            aria-label="Reset font size"
-          >
-            A
-          </button>
-          <button
-            id="font-increase"
-            aria-label="Increase font size"
-          >
-            A+
-          </button>
+          <button id="font-decrease" aria-label="Decrease font size">A-</button>
+          <button id="font-reset" aria-label="Reset font size">A</button>
+          <button id="font-increase" aria-label="Increase font size">A+</button>
         </div>
       </div>
       <div class="control-group">
@@ -183,7 +168,7 @@
         </div>
       </section>
 
-    <!-- Map -->
+      <!-- Map -->
       <section class="map-container" aria-labelledby="location-heading">
         <h2 id="location-heading">Our Location</h2>
         <div class="map-placeholder">
@@ -212,7 +197,7 @@
           Thank you for your message! We'll respond within 1-2 business days.
         </div>
 
-    <!-- Form -->
+        <!-- Form -->
         <div class="form-container">
           <form id="contact-form" novalidate>
             <p>
@@ -229,7 +214,6 @@
                 id="name"
                 name="name"
                 required
-                aria-required="true"
                 aria-describedby="name-error"
                 autocomplete="name"
               />
@@ -249,7 +233,6 @@
                 id="email"
                 name="email"
                 required
-                aria-required="true"
                 aria-describedby="email-error"
                 autocomplete="email"
               />
@@ -268,7 +251,6 @@
                 id="subject"
                 name="subject"
                 required
-                aria-required="true"
                 aria-describedby="subject-error"
               >
                 <option value="">-- Please select a subject --</option>
@@ -295,7 +277,6 @@
                 id="message"
                 name="message"
                 required
-                aria-required="true"
                 aria-describedby="message-error"
               ></textarea>
               <span
