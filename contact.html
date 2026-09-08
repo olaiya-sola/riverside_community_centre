@@ -63,8 +63,8 @@
 
     <header role="banner">
       <div class="header-content">
-        <h1>Riverside Community Centre</h1>
-        <p style="margin: 0; color: white; font-size: 1.1rem">
+        <p class="site-name">Riverside Community Centre</p>
+        <p style="margin: 0; color: #fff; font-size: 1.1rem">
           Bringing Our Community Together
         </p>
       </div>
@@ -75,10 +75,10 @@
         <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Programs & Services</a></li>
+          <li><a href="services.html">Programmes & Services</a></li>
           <li><a href="form.html">Register</a></li>
           <li>
-            <a href="#main-content" class="active" aria-current="page"
+            <a href="contact.html" class="active" aria-current="page"
               >Contact</a
             >
           </li>
@@ -92,7 +92,7 @@
       <div class="intro-text">
         <p>
           We'd love to hear from you! Whether you have questions about our
-          programs, need accessibility support, or want to get involved, we're
+          programmes, need accessibility support, or want to get involved, we're
           here to help.
         </p>
       </div>
@@ -145,7 +145,7 @@
           <article class="contact-card">
             <h3>Program Information</h3>
             <dl class="contact-info">
-              <dt>Programs Manager:</dt>
+              <dt>Programmes Manager:</dt>
               <dd>Michael Chen</dd>
 
               <dt>Phone:</dt>
@@ -153,8 +153,8 @@
 
               <dt>Email:</dt>
               <dd>
-                <a href="mailto:programs@riversidecc.org"
-                  >programs@riversidecc.org</a
+                <a href="mailto:programmes@riversidecc.org"
+                  >programmes@riversidecc.org</a
                 >
               </dd>
             </dl>
@@ -181,9 +181,7 @@
 
       <section class="map-container" aria-labelledby="location-heading">
         <h2 id="location-heading">Our Location</h2>
-        <div
-          class="map-placeholder"
-        >
+        <div class="map-placeholder">
           <p><strong>Map Placeholder</strong></p>
           <p>
             In a real implementation, an accessible embedded map would appear
@@ -200,7 +198,7 @@
       <section aria-labelledby="message-form-heading">
         <h2 id="message-form-heading">Send Us a Message</h2>
 
-       <div
+        <div
           id="success-message"
           class="success-message"
           role="alert"
@@ -211,6 +209,11 @@
 
         <div class="form-container">
           <form id="contact-form" novalidate>
+            <p>
+              Fields marked with
+              <span class="required" aria-hidden="true">*</span> are required.
+            </p>
+
             <div class="form-group">
               <label for="name">
                 Your Name <span class="required" aria-hidden="true">*</span>
@@ -264,7 +267,7 @@
               >
                 <option value="">-- Please select a subject --</option>
                 <option value="general">General Inquiry</option>
-                <option value="programs">Program Information</option>
+                <option value="programmes">Program Information</option>
                 <option value="accessibility">Accessibility Support</option>
                 <option value="membership">Membership Question</option>
                 <option value="feedback">Feedback or Suggestion</option>
@@ -309,7 +312,7 @@
         <p>Phone: 01234 567890 | Email: info@riversidecc.org</p>
         <p>Open Monday-Saturday: 7am-10pm | Sunday: 9am-6pm</p>
         <p style="margin-top: 20px">
-          &copy; 2024 Riverside Community Centre. All rights reserved.
+          &copy; 2026 Riverside Community Centre. All rights reserved.
         </p>
       </div>
     </footer>

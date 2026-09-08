@@ -112,7 +112,7 @@ body {
 
 header {
   background-color: var(--primary-color);
-  color: white;
+  color: #fff;
   padding: 20px;
 }
 
@@ -131,9 +131,11 @@ body.high-contrast header {
   gap: 20px;
 }
 
-h1 {
+.site-name {
   font-size: 1.8rem;
-  color: white;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
 }
 
 nav {
@@ -177,7 +179,7 @@ nav {
 .nav-menu a:hover,
 .nav-menu a:focus {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--button-text);
 }
 
 .nav-menu a.active {
@@ -392,7 +394,7 @@ button[type="reset"] {
 
 .success-message {
   background-color: var(--success-color);
-  color: white;
+  color: #fff;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
