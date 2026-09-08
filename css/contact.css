@@ -77,7 +77,8 @@ body {
   flex-wrap: wrap;
 }
 
-.accessibility-controls label {
+.accessibility-controls label,
+.accessibility-controls .control-label {
   font-size: 0.9rem;
   font-weight: bold;
 }

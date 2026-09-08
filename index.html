@@ -26,26 +26,22 @@
       aria-label="Accessibility controls"
     >
       <div class="control-group">
-        <label for="font-controls">Text Size:</label>
-        <div id="font-controls">
-          <button
-            id="font-decrease"
-            aria-label="Decrease font size"
-            title="Decrease font size"
-          >
-            A-
-          </button>
+        <span id="font-controls-label" class="control-label">Text Size:</span>
+        <div
+          id="font-controls"
+          role="group"
+          aria-labelledby="font-controls-label"
+        >
+          <button id="font-decrease" aria-label="Decrease font size">A-</button>
           <button
             id="font-reset"
             aria-label="Reset font size"
-            title="Reset font size"
           >
             A
           </button>
           <button
             id="font-increase"
             aria-label="Increase font size"
-            title="Increase font size"
           >
             A+
           </button>
@@ -57,7 +53,6 @@
           id="theme-toggle"
           aria-pressed="false"
           aria-label="Toggle high contrast mode"
-          title="Toggle high contrast mode"
         >
           Toggle
         </button>
@@ -65,7 +60,7 @@
     </div>
 
     <!-- Header -->
-    <header role="banner">
+    <header>
       <div class="header-content">
         <p class="site-name">Riverside Community Centre</p>
         <p style="margin: 0; color: #fff; font-size: 1.1rem">
@@ -75,7 +70,7 @@
     </header>
 
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
+    <nav aria-label="Main navigation">
       <div class="nav-container">
         <ul class="nav-menu">
           <li>
@@ -90,7 +85,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main id="main-content" role="main">
+    <main id="main-content">
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-heading">
         <h1 id="hero-heading">Welcome to Riverside Community Centre</h1>
@@ -175,7 +170,7 @@
     </main>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer>
       <div class="footer-content">
         <p><strong>Riverside Community Centre</strong></p>
         <p>123 Community Way, Riverside, RC1 2AB</p>

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - Riverside Community Centre</title>
     <link rel="stylesheet" href="css/about.css" />
@@ -26,26 +26,27 @@
       aria-label="Accessibility controls"
     >
       <div class="control-group">
-        <label for="font-controls">Text Size:</label>
-        <div id="font-controls">
+        <span id="font-controls-label" class="control-label">Text Size:</span>
+        <div
+          id="font-controls"
+          role="group"
+          aria-labelledby="font-controls-label"
+        >
           <button
             id="font-decrease"
             aria-label="Decrease font size"
-            title="Decrease font size"
           >
             A-
           </button>
           <button
             id="font-reset"
             aria-label="Reset font size"
-            title="Reset font size"
           >
             A
           </button>
           <button
             id="font-increase"
             aria-label="Increase font size"
-            title="Increase font size"
           >
             A+
           </button>
@@ -57,7 +58,6 @@
           id="theme-toggle"
           aria-pressed="false"
           aria-label="Toggle high contrast mode"
-          title="Toggle high contrast mode"
         >
           Toggle
         </button>
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Header -->
-    <header role="banner">
+    <header>
       <div class="header-content">
         <p class="site-name">Riverside Community Centre</p>
         <p style="margin: 0; color: #fff; font-size: 1.1rem">
@@ -75,14 +75,12 @@
     </header>
 
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
+    <nav aria-label="Main navigation">
       <div class="nav-container">
         <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
           <li>
-            <a href="about.html" class="active" aria-current="page"
-              >About Us</a
-            >
+            <a href="about.html" class="active" aria-current="page">About Us</a>
           </li>
           <li><a href="services.html">Programmes & Services</a></li>
           <li><a href="form.html">Register</a></li>
@@ -92,7 +90,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main id="main-content" role="main">
+    <main id="main-content">
       <h1 class="page-title">About Riverside Community Centre</h1>
 
       <div class="intro-text">
@@ -116,8 +114,8 @@
         <h3>Mission Statement</h3>
         <p>
           To strengthen our community by providing accessible, inclusive
-          programmes and services that enhance quality of life, promote health and
-          wellbeing, and foster connections among all residents.
+          programmes and services that enhance quality of life, promote health
+          and wellbeing, and foster connections among all residents.
         </p>
 
         <h3>Vision Statement</h3>
@@ -137,8 +135,8 @@
             <h3>Inclusivity</h3>
             <p>
               We welcome everyone and actively work to remove barriers that
-              prevent participation. Our programmes and facilities are designed to
-              be accessible to people of all abilities.
+              prevent participation. Our programmes and facilities are designed
+              to be accessible to people of all abilities.
             </p>
           </article>
 
@@ -146,8 +144,8 @@
             <h3>Community</h3>
             <p>
               We believe in the power of connection. By bringing people
-              together, we create a stronger, more supportive neighbourhood where
-              everyone looks out for one another.
+              together, we create a stronger, more supportive neighbourhood
+              where everyone looks out for one another.
             </p>
           </article>
 
@@ -247,7 +245,9 @@
             throughout the building
           </li>
           <li>Accessible parking spaces close to all entrances</li>
-          <li>Hearing loop systems in all meeting rooms and programme spaces</li>
+          <li>
+            Hearing loop systems in all meeting rooms and programme spaces
+          </li>
           <li>
             Large print and audio versions of all programme materials available
             upon request
@@ -255,8 +255,8 @@
           <li>Trained staff to assist with accessibility needs</li>
           <li>Adaptive equipment available for fitness programmes</li>
           <li>
-            Sensory-friendly spaces and programmes for individuals with autism and
-            sensory processing needs
+            Sensory-friendly spaces and programmes for individuals with autism
+            and sensory processing needs
           </li>
           <li>Service animal friendly environment</li>
         </ul>
@@ -316,7 +316,7 @@
     </main>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer>
       <div class="footer-content">
         <p><strong>Riverside Community Centre</strong></p>
         <p>123 Community Way, Riverside, RC1 2AB</p>
