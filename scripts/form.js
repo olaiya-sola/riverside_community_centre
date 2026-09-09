@@ -156,7 +156,7 @@ form.addEventListener("submit", (e) => {
   // Validate Program Selection
   const program = document.getElementById("program");
   if (program.value === "") {
-    showError("program", "Please select a program");
+    showError("program", "Please select a programme");
     isValid = false;
   }
 
