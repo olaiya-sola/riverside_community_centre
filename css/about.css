@@ -23,6 +23,7 @@ body.high-contrast {
   --button-text: #000000;
 }
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;

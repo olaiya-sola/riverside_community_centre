@@ -10,7 +10,11 @@ const srAnnouncement = document.getElementById("sr-announcement");
 
 function updateFontSize() {
   document.documentElement.style.fontSize = currentFontSize + "px";
+
+  // Save preference
   localStorage.setItem("fontSize", currentFontSize);
+
+  // Announce to screen readers
   srAnnouncement.textContent = `Font size changed to ${currentFontSize} pixels`;
 }
 
@@ -47,7 +51,11 @@ const body = document.body;
 function toggleTheme() {
   const isHighContrast = body.classList.toggle("high-contrast");
   themeToggle.setAttribute("aria-pressed", isHighContrast);
+
+  // Save preference
   localStorage.setItem("theme", isHighContrast ? "high-contrast" : "normal");
+
+  // Announce to screen readers
   srAnnouncement.textContent = isHighContrast
     ? "High contrast mode enabled"
     : "High contrast mode disabled";
